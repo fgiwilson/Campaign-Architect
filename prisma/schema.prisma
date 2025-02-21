@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model World {
+  id           Int        @id @default(autoincrement())
+  name         String
+  numCampaigns Int       @default(0)
+  worldImage   String?
+  mainDesc     String?
+  campaigns    Campaign[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  settings     Json?      // Flexible game settings
+
+  @@index([name])
+}
+
+model Campaign {
+  id           Int      @id @default(autoincrement())
+  name         String
+  campaignDesc String?
+  world        World    @relation(fields: [worldId], references: [id], onDelete: Cascade)
+  worldId      Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  status       String   @default("active")
+  metadata     Json?    // Flexible campaign metadata
+
+  @@index([worldId])
+  @@index([name])
+}
