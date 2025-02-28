@@ -1,0 +1,57 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Se produjo un error",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar"
+  },
+  "campaign": {
+    "title": "Campaña",
+    "new": "Nueva Campaña",
+    "edit": "Editar Campaña",
+    "name": "Nombre de la Campaña",
+    "description": "Descripción de la Campaña",
+    "status": {
+      "active": "Activa",
+      "archived": "Archivada",
+      "planning": "Planificación"
+    }
+  },
+  "npc": {
+    "title": "PNJ",
+    "new": "Nuevo PNJ",
+    "edit": "Editar PNJ",
+    "name": "Nombre del PNJ",
+    "disposition": {
+      "friendly": "Amistoso",
+      "neutral": "Neutral",
+      "hostile": "Hostil"
+    }
+  },
+  "player": {
+    "title": "Jugador",
+    "new": "Nuevo Jugador",
+    "edit": "Editar Jugador",
+    "name": "Nombre del Jugador",
+    "class": "Clase del Personaje",
+    "race": "Raza del Personaje"
+  },
+  "location": {
+    "title": "Ubicación",
+    "new": "Nueva Ubicación",
+    "edit": "Editar Ubicación",
+    "name": "Nombre de la Ubicación",
+    "aspects": "Aspectos de la Ubicación",
+    "readAloud": "Texto para Leer en Voz Alta"
+  },
+  "accessibility": {
+    "mainNav": "Navegación principal",
+    "skipToContent": "Saltar al contenido principal",
+    "menuButton": "Alternar menú",
+    "closeButton": "Cerrar",
+    "searchInput": "Buscar",
+    "required": "Campo requerido"
+  }
+}

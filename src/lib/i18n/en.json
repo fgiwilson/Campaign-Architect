@@ -1,0 +1,57 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+  "campaign": {
+    "title": "Campaign",
+    "new": "New Campaign",
+    "edit": "Edit Campaign",
+    "name": "Campaign Name",
+    "description": "Campaign Description",
+    "status": {
+      "active": "Active",
+      "archived": "Archived",
+      "planning": "Planning"
+    }
+  },
+  "npc": {
+    "title": "NPC",
+    "new": "New NPC",
+    "edit": "Edit NPC",
+    "name": "NPC Name",
+    "disposition": {
+      "friendly": "Friendly",
+      "neutral": "Neutral",
+      "hostile": "Hostile"
+    }
+  },
+  "player": {
+    "title": "Player",
+    "new": "New Player",
+    "edit": "Edit Player",
+    "name": "Player Name",
+    "class": "Character Class",
+    "race": "Character Race"
+  },
+  "location": {
+    "title": "Location",
+    "new": "New Location",
+    "edit": "Edit Location",
+    "name": "Location Name",
+    "aspects": "Location Aspects",
+    "readAloud": "Read Aloud Text"
+  },
+  "accessibility": {
+    "mainNav": "Main navigation",
+    "skipToContent": "Skip to main content",
+    "menuButton": "Toggle menu",
+    "closeButton": "Close",
+    "searchInput": "Search",
+    "required": "Required field"
+  }
+}

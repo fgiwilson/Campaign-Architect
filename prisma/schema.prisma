@@ -33,11 +33,104 @@ model Campaign {
   campaignDesc String?
   world        World    @relation(fields: [worldId], references: [id], onDelete: Cascade)
   worldId      Int
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
   status       String   @default("active")
   metadata     Json?    // Flexible campaign metadata
+  fronts       Front[]
+  CampaignNPCs CampaignNPC[]
+  CampaignPlayers CampaignPlayer[]
 
   @@index([worldId])
   @@index([name])
+}
+
+model Front {
+  id   Int @id @default(autoincrement())
+  name String
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+  campaignId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+
+  @@index([name])
+  @@index([campaignId])
+}
+
+enum NPCDisposition {
+  FRIENDLY
+  NEUTRAL
+  HOSTILE
+}
+
+model NPC {
+  id   Int @id @default(autoincrement())
+  name String
+  currentLocation Location? @relation(fields: [currentLocationId], references: [id])
+  currentLocationId Int?
+  disposition NPCDisposition @default(NEUTRAL)
+  campaigns CampaignNPC[]
+}
+
+model Player {
+  id   Int @id @default(autoincrement())
+  name String
+  class String
+  race String
+  abilities Json?
+  campaigns CampaignPlayer[]
+}
+
+model Item {
+  id    Int    @id @default(autoincrement())
+  name  String
+  description String
+  value Int?
+  
+}
+
+model Location {
+  id   Int @id @default(autoincrement())
+  name String
+  locationAspects String[]
+  images String[]
+  readAloud String?
+  NPCs NPC[]
+  creatures CreatureLocation[]
+}
+
+model Creature {
+  id   Int @id @default(autoincrement())
+  name String
+  type String
+  images String[]
+  locations CreatureLocation[]
+}
+
+model CreatureLocation {
+  creature    Creature  @relation(fields: [creatureId], references: [id])
+  creatureId  Int
+  location    Location  @relation(fields: [locationId], references: [id])
+  locationId  Int
+
+  @@id([creatureId, locationId])
+}
+
+model CampaignNPC {
+  campaign    Campaign @relation(fields: [campaignId], references: [id])
+  campaignId  Int
+  npc         NPC      @relation(fields: [npcId], references: [id])
+  npcId       Int
+
+  @@id([campaignId, npcId])
+  @@unique([campaignId, npcId])
+}
+
+model CampaignPlayer {
+  campaign    Campaign @relation(fields: [campaignId], references: [id])
+  campaignId  Int
+  player      Player   @relation(fields: [playerId], references: [id])
+  playerId    Int
+
+  @@id([campaignId, playerId])
+  @@unique([campaignId, playerId])
 }
